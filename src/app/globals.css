@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+}
+
+@theme {
+  --color-primary: #45788f;
+  --color-primary-600: #45788f;
+  --color-primary-700: #3a667a;
+  --color-primary-400: #6a9cb0;
+}
