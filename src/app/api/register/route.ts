@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { CreateUser } from "@/models/User";
+import { CreateUser } from "@/DTOs/User";
 import { registerSchema } from "@/schemas/registerSchema";
 import { z } from "zod";
 
