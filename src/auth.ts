@@ -27,6 +27,7 @@ const providers: Provider[] = [
         const isPasswordCorrect = await bcrypt.compare(password, user.hashedPassword);
 
         if (isPasswordCorrect) {
+          delete user.hashedPassword;
           return user;
         } else {
           return null;

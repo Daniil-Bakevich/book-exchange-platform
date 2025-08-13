@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { RegisterForm } from "@/app/ui/RegisterForm";
+import { RegisterForm } from "@/ui/RegisterForm";
 
 export default function RegisterPage() {
   return (

@@ -23,7 +23,6 @@ export default async function ProfilePage() {
   }
 
   const user: User = await userResponse.json();
-  console.log(userId);
 
   const booksResponse = await fetch(`http://localhost:3001/books?ownerId=${userId}`);
   const books: Book[] = await booksResponse.json();
