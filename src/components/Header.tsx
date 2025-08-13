@@ -19,10 +19,7 @@ export async function Header() {
 
           {session?.user ? (
             <>
-              <Link
-                href="/profile"
-                className="text-gray-600 hover:text-primary"
-              >
+              <Link href="/profile" className="text-gray-600 hover:text-primary">
                 Profile
               </Link>
               <div className="hidden sm:block">

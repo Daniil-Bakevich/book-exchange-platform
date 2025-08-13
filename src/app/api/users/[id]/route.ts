@@ -21,7 +21,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     const response = await fetch(`http://localhost:3001/users/${params.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validatedData),
+      body: JSON.stringify(validatedData)
     });
 
     if (!response.ok) {
@@ -33,10 +33,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     return NextResponse.json(updatedUser);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new NextResponse(
-        JSON.stringify({ errors: error.flatten().fieldErrors }),
-        { status: 400 }
-      );
+      return new NextResponse(JSON.stringify({ errors: error.flatten().fieldErrors }), { status: 400 });
     }
     console.error("UPDATE_USER_ERROR", error);
 

@@ -35,17 +35,9 @@ export default async function ProfilePage() {
         <div className="container w-full px-4 py-8 mx-auto space-y-8">
           <div className="flex items-center justify-between pb-6 border-b">
             <div className="flex items-center space-x-4">
-              <Image
-                src={user.avatar}
-                alt={`${user.name}'s avatar`}
-                width={80}
-                height={80}
-                className="rounded-full"
-              />
+              <Image src={user.avatar} alt={`${user.name}'s avatar`} width={80} height={80} className="rounded-full" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  {user.name}
-                </h1>
+                <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
                 <p className="text-gray-500">{user.email}</p>
               </div>
             </div>
@@ -59,7 +51,7 @@ export default async function ProfilePage() {
             <h2 className="text-xl font-semibold text-gray-800">Your books</h2>
             {books.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {books.map((book) => (
+                {books.map(book => (
                   <Link href={`/books/${book.id}`} key={book.id}>
                     <div className="overflow-hidden bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow">
                       <div className="relative w-full h-48">
@@ -72,9 +64,7 @@ export default async function ProfilePage() {
                         />
                       </div>
                       <div className="p-4">
-                        <h3 className="font-semibold text-gray-800 truncate">
-                          {book.title}
-                        </h3>
+                        <h3 className="font-semibold text-gray-800 truncate">{book.title}</h3>
                         <p className="text-sm text-gray-500">{book.author}</p>
                       </div>
                     </div>

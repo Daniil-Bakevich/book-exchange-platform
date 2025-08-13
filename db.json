@@ -63,11 +63,7 @@
       "title": "Journey to the Center of Code",
       "author": "Anna Smirnova",
       "description": "A fascinating dive into the world of programming and data structures.",
-      "genreIds": [
-        1,
-        2,
-        3
-      ],
+      "genreIds": [1, 2, 3],
       "publicationDate": "2024-07-01T12:00:00Z",
       "images": [
         "https://images.unsplash.com/photo-1543002588-b9b6b622e8af?w=500&q=80",
@@ -81,14 +77,9 @@
       "title": "The Algorithms of Taste",
       "author": "Ivan Kuznetsov",
       "description": "An unexpected look at cooking through the prism of algorithmic thinking.",
-      "genreIds": [
-        4,
-        5
-      ],
+      "genreIds": [4, 5],
       "publicationDate": "2024-07-10T18:45:00Z",
-      "images": [
-        "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=500&q=80"
-      ],
+      "images": ["https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=500&q=80"],
       "ownerId": "2",
       "statusId": 2
     },
@@ -97,14 +88,9 @@
       "title": "Chronicles of the Lost City",
       "author": "Anna Smirnova",
       "description": "The continuation of the saga about adventures in digital worlds.",
-      "genreIds": [
-        1,
-        6
-      ],
+      "genreIds": [1, 6],
       "publicationDate": "2024-08-01T09:00:00Z",
-      "images": [
-        "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80"
-      ],
+      "images": ["https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80"],
       "ownerId": "1",
       "statusId": 3
     }

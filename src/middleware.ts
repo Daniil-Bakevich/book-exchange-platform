@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 
-export default auth((req) => {
+export default auth(req => {
   if (!req.auth) {
     const url = new URL("/login", req.url);
 
@@ -9,8 +9,5 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: [
-    "/testclient/:path*", 
-    "/create/:path*"
-  ],
+  matcher: ["/testclient/:path*", "/create/:path*"]
 };

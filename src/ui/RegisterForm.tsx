@@ -22,9 +22,9 @@ export function RegisterForm() {
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password })
     });
 
     const data = await response.json();
@@ -39,70 +39,55 @@ export function RegisterForm() {
       email,
       password,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "/"
     });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name
         </label>
         <input
           id="name"
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
           required
           className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         />
-        {errors.name && (
-          <p className="mt-2 text-xs text-red-600">{errors.name[0]}</p>
-        )}
+        {errors.name && <p className="mt-2 text-xs text-red-600">{errors.name[0]}</p>}
       </div>
 
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           Email
         </label>
         <input
           id="email"
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           required
           className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         />
-        {errors.email && (
-          <p className="mt-2 text-xs text-red-600">{errors.email[0]}</p>
-        )}
+        {errors.email && <p className="mt-2 text-xs text-red-600">{errors.email[0]}</p>}
       </div>
 
       <div>
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
           Password
         </label>
         <input
           id="password"
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           required
           className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         />
-        {errors.password && (
-          <p className="mt-2 text-xs text-red-600">{errors.password[0]}</p>
-        )}
+        {errors.password && <p className="mt-2 text-xs text-red-600">{errors.password[0]}</p>}
       </div>
 
       <div>

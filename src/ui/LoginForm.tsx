@@ -21,7 +21,7 @@ export function LoginForm() {
       const result = await signIn("credentials", {
         redirect: false,
         email,
-        password,
+        password
       });
 
       setIsSubmitting(false);
@@ -38,42 +38,32 @@ export function LoginForm() {
 
   return (
     <>
-      {error && (
-        <div className="p-3 text-sm text-center text-red-800 bg-red-100 rounded-md">
-          {error}
-        </div>
-      )}
+      {error && <div className="p-3 text-sm text-center text-red-800 bg-red-100 rounded-md">{error}</div>}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
           </label>
           <input
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             Password
           </label>
           <input
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
             className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
           />

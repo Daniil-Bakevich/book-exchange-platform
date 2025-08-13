@@ -9,7 +9,7 @@ const providers: Provider[] = [
   Credentials({
     credentials: {
       email: {},
-      password: {},
+      password: {}
     },
     async authorize(credentials) {
       try {
@@ -39,15 +39,15 @@ const providers: Provider[] = [
 
         return null;
       }
-    },
-  }),
+    }
+  })
 ];
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers,
   pages: {
     signIn: "/login",
-    signOut: "/logout",
+    signOut: "/logout"
   },
   callbacks: {
     jwt({ token, user }) {
@@ -63,6 +63,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       return session;
-    },
-  },
+    }
+  }
 });

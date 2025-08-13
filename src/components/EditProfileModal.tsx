@@ -38,7 +38,7 @@ export default function EditProfileModal({ user }: { user: User }) {
     const updatedData = {
       ...(name !== user.name && { name }),
       ...(email !== user.email && { email }),
-      ...(avatar !== user.avatar && { avatar }),
+      ...(avatar !== user.avatar && { avatar })
     };
 
     if (Object.keys(updatedData).length === 0) {
@@ -50,7 +50,7 @@ export default function EditProfileModal({ user }: { user: User }) {
     const response = await fetch(`/api/users/${user.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(updatedData)
     });
 
     if (!response.ok) {
@@ -88,12 +88,10 @@ export default function EditProfileModal({ user }: { user: User }) {
                   id="name"
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={e => setName(e.target.value)}
                   className="w-full mt-1 input-style"
                 />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-600">{errors.name[0]}</p>
-                )}
+                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name[0]}</p>}
               </div>
 
               <div>
@@ -104,12 +102,10 @@ export default function EditProfileModal({ user }: { user: User }) {
                   id="email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   className="w-full mt-1 input-style"
                 />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email[0]}</p>
-                )}
+                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email[0]}</p>}
               </div>
 
               <div>
@@ -120,14 +116,10 @@ export default function EditProfileModal({ user }: { user: User }) {
                   id="avatar"
                   type="text"
                   value={avatar}
-                  onChange={(e) => setAvatar(e.target.value)}
+                  onChange={e => setAvatar(e.target.value)}
                   className="w-full mt-1 input-style"
                 />
-                {errors.avatar && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.avatar[0]}
-                  </p>
-                )}
+                {errors.avatar && <p className="mt-1 text-sm text-red-600">{errors.avatar[0]}</p>}
               </div>
 
               <div className="flex justify-end pt-4 space-x-3">
