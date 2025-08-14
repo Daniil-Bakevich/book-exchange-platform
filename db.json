@@ -99,22 +99,22 @@
     {
       "id": "1001",
       "text": "Great book! It really helped me understand the basics. I recommend it to all beginners.",
-      "bookId": 101,
-      "authorId": 2,
+      "bookId": "101",
+      "authorId": "2",
       "createdAt": "2024-07-15T11:05:10Z"
     },
     {
       "id": "1002",
       "text": "Has anyone tried the recipe from chapter three yet? Did it work out?",
-      "bookId": 102,
-      "authorId": 1,
+      "bookId": "102",
+      "authorId": "1",
       "createdAt": "2024-07-20T19:20:00Z"
     },
     {
       "id": "1003",
       "text": "I can't believe this was written by the same author! A completely different style.",
-      "bookId": 101,
-      "authorId": 2,
+      "bookId": "101",
+      "authorId": "2",
       "createdAt": "2024-08-02T13:15:30Z"
     }
   ]
