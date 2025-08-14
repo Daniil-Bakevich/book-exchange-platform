@@ -66,8 +66,8 @@
       "genreIds": [1, 2, 3],
       "publicationDate": "2024-07-01T12:00:00Z",
       "images": [
-        "https://images.unsplash.com/photo-1543002588-b9b6b622e8af?w=500&q=80",
-        "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80"
+        "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80",
+        "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80"
       ],
       "ownerId": "1",
       "statusId": 1

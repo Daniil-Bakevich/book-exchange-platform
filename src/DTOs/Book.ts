@@ -6,6 +6,6 @@ export interface Book {
   genreIds: number[];
   publicationDate: string;
   images: string[];
-  ownerId: number;
+  ownerId: string;
   statusId: number;
 }
