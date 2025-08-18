@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -11,11 +10,7 @@ import EditProfileModal from "@/components/EditProfileModal";
 
 export default async function ProfilePage() {
   const session = await auth();
-  const userId = session?.user?.id;
-
-  if (!userId) {
-    redirect("/login");
-  }
+  const userId = session?.user?.id as string;
 
   const userResponse = await fetch(`http://localhost:3001/users/${userId}`);
   if (!userResponse.ok) {
@@ -48,7 +43,15 @@ export default async function ProfilePage() {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-800">Your books</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-800">Your books</h2>
+              <Link href="/books/new">
+                <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-white rounded-md shadow-sm bg-primary hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                  + Add a book
+                </span>
+              </Link>
+            </div>
+
             {books.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {books.map(book => (

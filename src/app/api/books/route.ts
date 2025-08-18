@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Book } from "@/DTOs/Book";
+import { auth } from "@/auth";
+import { bookSchema } from "@/schemas/bookSchema";
+import { z } from "zod";
+
+const API_URL = process.env.DB_URL;
 
 export async function GET(req: NextRequest) {
-  const API_URL = process.env.DB_URL;
-
   if (!API_URL) {
     return new NextResponse("API URL is not configured", { status: 500 });
   }
@@ -32,6 +35,50 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(books);
   } catch (error) {
     console.error("API_BOOKS_ERROR:", error);
+    return new NextResponse("Internal Server Error", { status: 500 });
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return new NextResponse("Unauthorized", { status: 401 });
+  }
+
+  if (!API_URL) {
+    return new NextResponse("API URL not configured", { status: 500 });
+  }
+
+  try {
+    const body = await req.json();
+
+    const validatedData = bookSchema.parse(body);
+
+    const newBook: Omit<Book, "id"> = {
+      ...validatedData,
+      ownerId: session.user.id,
+      publicationDate: new Date().toISOString()
+    };
+
+    const response = await fetch(`${API_URL}/books`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBook)
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create a book on server.");
+    }
+
+    const createdBook = await response.json();
+
+    return NextResponse.json(createdBook, { status: 201 });
+  } catch (error: any) {
+    if (error.name === "ZodError") {
+      return NextResponse.json({ errors: z.flattenError(error).fieldErrors }, { status: 400 });
+    }
+    console.error("API_BOOKS_POST_ERROR:", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

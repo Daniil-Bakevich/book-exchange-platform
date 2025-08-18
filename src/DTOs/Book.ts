@@ -7,5 +7,5 @@ export interface Book {
   publicationDate: string;
   images: string[];
   ownerId: string;
-  statusId: number;
+  statusId: string;
 }
