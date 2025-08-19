@@ -9,6 +9,9 @@ import { CommentSection } from "@/components/CommentSection";
 import { Book } from "@/DTOs/Book";
 import { User } from "@/DTOs/User";
 import { Comment } from "@/DTOs/Comment";
+import { Status } from "@/DTOs/Status";
+import { BookStatusBadge } from "@/components/BookStatusBadge";
+import Link from "next/link";
 
 type commentsWithAuthorsFiltered = {
   user: User;
@@ -23,18 +26,22 @@ async function getBookData(id: string) {
   const API_URL = process.env.DB_URL;
   if (!API_URL) return null;
 
-  const [bookRes, commentsRes] = await Promise.all([
+  const [bookRes, commentsRes, statusesRes] = await Promise.all([
     fetch(`${API_URL}/books/${id}`),
-    fetch(`${API_URL}/comments?bookId=${id}`)
+    fetch(`${API_URL}/comments?bookId=${id}`),
+    fetch(`${API_URL}/statuses`)
   ]);
 
   if (!bookRes.ok) return null;
 
   const book: Book = await bookRes.json();
   const baseComments: Comment[] = await commentsRes.json();
+  const statuses: Status[] = await statusesRes.json();
+
+  const bookStatus = statuses.find(status => +status.id === +book.statusId) || null;
 
   if (baseComments.length === 0) {
-    return { book, comments: [] };
+    return { book, comments: [], bookStatus };
   }
 
   const authorIds = [...new Set(baseComments.map(comment => comment.authorId))];
@@ -53,7 +60,7 @@ async function getBookData(id: string) {
     }))
     .filter(comment => comment.user !== null) as commentsWithAuthorsFiltered[];
 
-  return { book, comments: commentsWithAuthors };
+  return { book, comments: commentsWithAuthors, bookStatus };
 }
 
 export default async function BookPage({ params }: { params: { id: string } }) {
@@ -65,7 +72,9 @@ export default async function BookPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  const { book, comments } = bookData;
+  const { book, comments, bookStatus } = bookData;
+
+  const isOwner = session?.user?.id === book.ownerId;
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -86,6 +95,17 @@ export default async function BookPage({ params }: { params: { id: string } }) {
               <p className="mt-4 text-sm text-gray-500">
                 Date of publication: {new Date(book.publicationDate).toLocaleDateString()}
               </p>
+
+              <div className="flex mt-6 items-baseline justify-between">
+                {bookStatus && <BookStatusBadge status={bookStatus.name} />}
+                {isOwner && (
+                  <Link href={`/books/${book.id}/edit`}>
+                    <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
+                      Edit
+                    </span>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
           <div className="mt-16">
