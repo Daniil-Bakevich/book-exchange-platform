@@ -1,0 +1,121 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Ivanova",
+      "email": "alice.ivanova@example.com",
+      "avatar": "https://i.pravatar.cc/150?u=alice",
+      "registrationDate": "2024-05-15T10:30:00Z",
+      "hashedPassword": "$2b$10$MMa4MvO4jWxy0PlBYkVdMODItDghaaK2HmbwDEqNa4375YcKhjaAu"
+    },
+    {
+      "id": "2",
+      "name": "Boris Petrov",
+      "email": "boris.petrov@example.com",
+      "avatar": "https://i.pravatar.cc/150?u=boris",
+      "registrationDate": "2024-06-20T14:00:00Z",
+      "hashedPassword": "$2b$10$MMa4MvO4jWxy0PlBYkVdMODItDghaaK2HmbwDEqNa4375YcKhjaAu"
+    }
+  ],
+  "genres": [
+    {
+      "id": "1",
+      "name": "Science Fiction"
+    },
+    {
+      "id": "2",
+      "name": "Technology"
+    },
+    {
+      "id": "3",
+      "name": "Adventure"
+    },
+    {
+      "id": "4",
+      "name": "Cooking"
+    },
+    {
+      "id": "5",
+      "name": "Popular Science"
+    },
+    {
+      "id": "6",
+      "name": "Cyberpunk"
+    }
+  ],
+  "statuses": [
+    {
+      "id": "1",
+      "name": "exchange"
+    },
+    {
+      "id": "2",
+      "name": "sale"
+    },
+    {
+      "id": "3",
+      "name": "sold"
+    }
+  ],
+  "books": [
+    {
+      "id": "101",
+      "title": "Journey to the Center of Code",
+      "author": "Anna Smirnova",
+      "description": "A fascinating dive into the world of programming and data structures.",
+      "genreIds": [1, 2, 3],
+      "publicationDate": "2024-07-01T12:00:00Z",
+      "images": [
+        "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80",
+        "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80"
+      ],
+      "ownerId": "1",
+      "statusId": 1
+    },
+    {
+      "id": "102",
+      "title": "The Algorithms of Taste",
+      "author": "Ivan Kuznetsov",
+      "description": "An unexpected look at cooking through the prism of algorithmic thinking.",
+      "genreIds": [4, 5],
+      "publicationDate": "2024-07-10T18:45:00Z",
+      "images": ["https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=500&q=80"],
+      "ownerId": "2",
+      "statusId": 2
+    },
+    {
+      "id": "103",
+      "title": "Chronicles of the Lost City",
+      "author": "Anna Smirnova",
+      "description": "The continuation of the saga about adventures in digital worlds.",
+      "genreIds": [1, 6],
+      "publicationDate": "2024-08-01T09:00:00Z",
+      "images": ["https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80"],
+      "ownerId": "1",
+      "statusId": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": "1001",
+      "text": "Great book! It really helped me understand the basics. I recommend it to all beginners.",
+      "bookId": "101",
+      "authorId": "2",
+      "createdAt": "2024-07-15T11:05:10Z"
+    },
+    {
+      "id": "1002",
+      "text": "Has anyone tried the recipe from chapter three yet? Did it work out?",
+      "bookId": "102",
+      "authorId": "1",
+      "createdAt": "2024-07-20T19:20:00Z"
+    },
+    {
+      "id": "1003",
+      "text": "I can't believe this was written by the same author! A completely different style.",
+      "bookId": "101",
+      "authorId": "2",
+      "createdAt": "2024-08-02T13:15:30Z"
+    }
+  ]
+}
